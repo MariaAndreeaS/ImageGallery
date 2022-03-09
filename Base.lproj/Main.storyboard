@@ -69,7 +69,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="273" height="236"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-Aq-mqo">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-Aq-mqo">
                                             <rect key="frame" x="0.0" y="0.0" width="273" height="236"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </imageView>
@@ -82,7 +82,6 @@
                                     <constraint firstItem="Kqa-Aq-mqo" firstAttribute="leading" secondItem="bZH-qJ-fqg" secondAttribute="leading" id="gxx-nt-g5M"/>
                                     <constraint firstAttribute="bottom" secondItem="Kqa-Aq-mqo" secondAttribute="bottom" id="mZ2-ZA-30y"/>
                                 </constraints>
-                                <size key="customSize" width="273" height="236"/>
                                 <connections>
                                     <outlet property="imageView" destination="Kqa-Aq-mqo" id="urr-K8-WHN"/>
                                     <segue destination="COK-a6-JIn" kind="showDetail" identifier="Show Image" id="pcf-Yl-YOl"/>

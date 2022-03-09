@@ -47,11 +47,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDrop
         return cell
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //
 //        let imgWidth = 200.0
 //        let imgHeight = CGFloat(imageCollection[indexPath.item].aspectRatio)
 //        return CGSize(width: imgWidth, height: imgWidth/imgHeight )
+//           return CGSize(width: 50, height: 50)
 //    }
 
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
