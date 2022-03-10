@@ -69,6 +69,21 @@ class TableViewController: UITableViewController {
     }
 
 
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+           if indexPath.section == 1 {
+               let unDelete = UIContextualAction(style: .normal, title: "Undelete") { [self] (action, view, completionHandler) in
+                   let unDeletedItem = deleted.remove(at: indexPath.row)
+                   counts.append(unDeletedItem)
+                   completionHandler(true)
+                   self.tableView.reloadData()
+               }
+               unDelete.backgroundColor = UIColor.systemGreen
+               return UISwipeActionsConfiguration(actions: [unDelete])
+           } else {
+               return nil
+           }
+       }
+
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
