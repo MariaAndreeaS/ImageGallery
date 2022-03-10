@@ -121,6 +121,7 @@
         <!--Image View Controller-->
         <scene sceneID="obt-7Q-2e2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePp-Er-oZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="COK-a6-JIn" customClass="ImageViewController" customModule="ImageGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5xm-IR-dJd">
                         <rect key="frame" x="0.0" y="0.0" width="1045.5" height="1024"/>
@@ -140,7 +141,6 @@
                         <outlet property="scrollView" destination="Bfs-8h-seW" id="yDS-4M-NB4"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ePp-Er-oZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2216" y="1823"/>
         </scene>

@@ -47,13 +47,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDrop
         return cell
     }
 
-//func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let imgWidth = 200.0
-//        let imgHeight = CGFloat(imageCollection[indexPath.item].aspectRatio)
-//        return CGSize(width: imgWidth, height: imgWidth/imgHeight )
-//           return CGSize(width: 50, height: 50)
-//    }
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let imgWidth = 100.0
+        let imgHeight = CGFloat(imageCollection[indexPath.item].aspectRatio)
+        return CGSize(width: imgWidth, height: imgWidth/imgHeight )
+    }
 
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         session.localContext = collectionView
@@ -69,11 +68,22 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDrop
       return []
     }
 
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        _ = "Show Image"
+        if segue.identifier != nil {
+               if let imageCell = sender as? CollectionViewCell,
+                   let indexPath = collectionView?.indexPath(for: imageCell),
+                   let image = segue.destination as? ImageViewController {
+                        image.imageURL = imageCollection[indexPath.item].url
+                }
+            }
+        }
+
     //drop data into the collection view
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
 
         let indexDestination = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
-
            let items = coordinator.items
             for item in items {
                 if let sourceIndexPath = item.sourceIndexPath{

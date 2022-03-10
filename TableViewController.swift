@@ -9,12 +9,15 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+
     var counts = ["Gallery 1","Gallery 2","Gallery 3"]
+    var deleted = [String]()
+    //var sec = ["Image Galleries","Recently Deleted"]
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,6 +34,12 @@ class TableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch(section) {
+             case 1: return "Recently Deleted"
+             default :return ""
+           }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -43,13 +52,16 @@ class TableViewController: UITableViewController {
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
         if editingStyle == .delete {
             // Delete the row from the data source
             counts.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+        tableView.reloadData()
     }
 
 
