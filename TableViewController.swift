@@ -12,7 +12,7 @@ class TableViewController: UITableViewController {
 
     var counts = ["Gallery 1","Gallery 2","Gallery 3"]
     var deleted = [String]()
-    //var sec = ["Image Galleries","Recently Deleted"]
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -22,14 +22,14 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return counts.count
+        return [counts,deleted][section].count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
 
-        cell.textLabel?.text = counts[indexPath.row]
+        cell.textLabel?.text = [counts,deleted][indexPath.section][indexPath.row]
 
         return cell
     }
@@ -54,12 +54,16 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
-            // Delete the row from the data source
-            counts.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+            if indexPath.section == 0 {
+               // Delete the row from the data source
+                let del = counts.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                //  tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+                deleted.append(del)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            deleted.remove(at: indexPath.row)
+          }
         }
         tableView.reloadData()
     }
